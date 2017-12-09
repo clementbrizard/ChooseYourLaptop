@@ -1,0 +1,29 @@
+// Bureautique
+
+R1 : Si mail > 5 et Excel > 5 et Traitement de texte > 5 alors usage = bureautique
+
+R2 : Si usage = bureautique et prix < 500 alors qualite = bas de gamme
+R3 : Si usage = bureautique et prix = 500 alors qualite = milieu de gamme
+R4 : Si usage = bureautique et prix > 500 alors qualite = haut de gamme
+R5 : Si usage = bureautique et prix < 500 et preference = stockage alors ordi = ASUS EeeBook E402BA-FA159T Bleu
+R6 : Si usage = bureautique et prix < 500 et preference = mobilite alors ordi = ASUS Vivobook E200HA-FD0041TS
+R7 : Si usage = bureautique et prix = 500 alors ordi = ASUS R556QA-XX061T
+R8 : Si usage = bureautique et prix > 500 et preference = performance alors ordi = ASUS R540LJ-DM1065T
+R9 : Si usage = bureautique et prix > 500 et preference = écran alors ordi = Lenovo IdeaPad 320-17IKB 80XM00BUFR
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
