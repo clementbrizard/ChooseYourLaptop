@@ -1,15 +1,40 @@
-// Bureautique
+Bureautique :
 
-R1 : Si mail > 5 et Excel > 5 et Traitement de texte > 5 alors usage = bureautique
+Si Tableur/Traitement de texte > 5 et Internet > 5 et Gaming < 5 alors usage = bureautique
 
-R2 : Si usage = bureautique et prix < 500 alors qualite = bas de gamme
-R3 : Si usage = bureautique et prix = 500 alors qualite = milieu de gamme
-R4 : Si usage = bureautique et prix > 500 alors qualite = haut de gamme
-R5 : Si usage = bureautique et prix < 500 et preference = stockage alors ordi = ASUS EeeBook E402BA-FA159T Bleu
-R6 : Si usage = bureautique et prix < 500 et preference = mobilite alors ordi = ASUS Vivobook E200HA-FD0041TS
-R7 : Si usage = bureautique et prix = 500 alors ordi = ASUS R556QA-XX061T
-R8 : Si usage = bureautique et prix > 500 et preference = performance alors ordi = ASUS R540LJ-DM1065T
-R9 : Si usage = bureautique et prix > 500 et preference = écran alors ordi = Lenovo IdeaPad 320-17IKB 80XM00BUFR
+Si usage = bureautique et prix < 500 alors qualite = bas de gamme
+Si usage = bureautique et prix = 500 alors qualite = milieu de gamme
+Si usage = bureautique et prix > 500 alors qualite = haut de gamme
+
+Si usage = bureautique et qualite = bas de gamme et preference = stockage alors ordi = ASUS EeeBook E402BA-FA159T Bleu
+Si usage = bureautique et qualite = bas de gamme et preference = mobilite alors ordi = ASUS Vivobook E200HA-FD0041TS
+Si usage = bureautique et milieu de gamme alors ordi = ASUS R556QA-XX061T
+Si usage = bureautique et qualite = haut de gamme et preference = performance alors ordi = ASUS R540LJ-DM1065T
+Si usage = bureautique et qualite = haut de gamme et preference = écran alors ordi = Lenovo IdeaPad 320-17IKB 80XM00BUFR
+
+
+Gaming :
+
+Usage = bureautique et prix <=1000 alors Niveau = entree_gamme
+Usage = bureautique et prix = 1100 alors Niveau = milieu_gamme
+Usage = bureautique et prix > 1100 alors Niveau = haut_gamme
+	
+Usage = bureautique et niveau = entree_gamme et preference = autonomie alors Ordi = MSI GL62M 7RDX-2231FR
+Usage = bureautique et niveau = entree_gamme et preference = carte_graphique alors Ordi = MSI GL62VR 7RFX-867FR
+Usage = bureautique et niveau = milieu_gamme  alors Ordi = MSI GP62MVR 7RFX-1010XFR Leopard Pro
+Usage = bureautique et niveau = haut_gamme et preference = autonomie alors Ordi = MSI GP62MVR 7RFX-847XFR Leopard Pro
+Usage = bureautique et niveau = entree_gamme et preference = carte_graphique  alors Ordi = MSI GE72MVR 7RG-055FR Apache Pro
+
+
+
+
+
+
+
+
+
+
+
 
 
 
