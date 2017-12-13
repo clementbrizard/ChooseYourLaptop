@@ -2,28 +2,49 @@ Bureautique :
 
 Si Tableur/Traitement de texte > 5 et Internet > 5 et Gaming < 5 alors usage = bureautique
 
-Si usage = bureautique et prix < 500 alors qualite = bas de gamme
-Si usage = bureautique et prix = 500 alors qualite = milieu de gamme
-Si usage = bureautique et prix > 500 alors qualite = haut de gamme
+Si Usage = bureautique et prix <=500 alors Niveau = entree_gamme
+Si Usage = bureautique et prix = 500 alors Niveau = milieu_gamme
+Si Usage = bureautique et prix > 500 alors Niveau = haut_gamme
+Si Usage = bureautique et niveau = entree_gamme et preference = autonomie alors Ordi = ASUS VivoBook E12 E203NA-FD035T
+Si Usage = bureautique et niveau = entree_gamme et preference = stockage alors Ordi = Acer Aspire ES1-523-24HN
+Si Usage = bureautique et niveau = milieu_gamme	alors Ordi = ASUS R702UA-BX169T
+Si Usage = bureautique et niveau = haut_gamme et preference = autonomie	alors Ordi = ASUS P1510UA-GQ281R
+Si Usage = bureautique et niveau = entree_gamme et preference = carte_graphique	alors Ordi = Lenovo IdeaPad 320-17IKB 80XM00BUFR
 
-Si usage = bureautique et qualite = bas de gamme et preference = stockage alors ordi = ASUS EeeBook E402BA-FA159T Bleu
-Si usage = bureautique et qualite = bas de gamme et preference = mobilite alors ordi = ASUS Vivobook E200HA-FD0041TS
-Si usage = bureautique et milieu de gamme alors ordi = ASUS R556QA-XX061T
-Si usage = bureautique et qualite = haut de gamme et preference = performance alors ordi = ASUS R540LJ-DM1065T
-Si usage = bureautique et qualite = haut de gamme et preference = écran alors ordi = Lenovo IdeaPad 320-17IKB 80XM00BUFR
 
 
 Gaming :
 
-Usage = bureautique et prix <=1000 alors Niveau = entree_gamme
-Usage = bureautique et prix = 1100 alors Niveau = milieu_gamme
-Usage = bureautique et prix > 1100 alors Niveau = haut_gamme
+Usage = gaming et prix <=1000 alors Niveau = entree_gamme
+Usage = gaming et prix = 1100 alors Niveau = milieu_gamme
+Usage = gaming et prix > 1100 alors Niveau = haut_gamme
 	
-Usage = bureautique et niveau = entree_gamme et preference = autonomie alors Ordi = MSI GL62M 7RDX-2231FR
-Usage = bureautique et niveau = entree_gamme et preference = carte_graphique alors Ordi = MSI GL62VR 7RFX-867FR
-Usage = bureautique et niveau = milieu_gamme  alors Ordi = MSI GP62MVR 7RFX-1010XFR Leopard Pro
-Usage = bureautique et niveau = haut_gamme et preference = autonomie alors Ordi = MSI GP62MVR 7RFX-847XFR Leopard Pro
-Usage = bureautique et niveau = entree_gamme et preference = carte_graphique  alors Ordi = MSI GE72MVR 7RG-055FR Apache Pro
+Usage = gaming et niveau = entree_gamme et preference = autonomie alors Ordi = MSI GL62M 7RDX-2231FR
+Usage = gaming et niveau = entree_gamme et preference = carte_graphique alors Ordi = MSI GL62VR 7RFX-867FR
+Usage = gaming et niveau = milieu_gamme  alors Ordi = MSI GP62MVR 7RFX-1010XFR Leopard Pro
+Usage = gaming et niveau = haut_gamme et preference = autonomie alors Ordi = MSI GP62MVR 7RFX-847XFR Leopard Pro
+Usage = gaming et niveau = entree_gamme et preference = carte_graphique  alors Ordi = MSI GE72MVR 7RG-055FR Apache Pro
+
+Apple :
+
+Si Wanted = prix et performance	alors Gamme = MacBook Air
+Si Wanted = stockage et écran alors Gamme = MacBook
+Si Wanted = performance et écran et stockage alors Gamme = MacBook Pro
+Si Gamme = MacBook Pro et preference = écran alors Gamme  = MacBook Pro 15’
+Si Gamme = MacBook Pro et exigence = prix alors Gamme = MacBook Pro 13’
+Si Gamme = MacBook Pro 15’ et preference = Touch Bar alors Ordi = MacBook Pro 15’ avec Touch Bar
+Si Gamme = MacBook Pro 15’ et preference = prix	alors Ordi = MacBook Pro 15’ sans Touch Bar
+Si Gamme = MacBook Pro 13’ et exigence = Touch Bar alors Gamme = MacBook Pro 13’ avec Touch Bar
+Si Gamme = MacBook Pro 13’ et exigence = prix alors Gamme = MacBook Pro 13’ sans Touch Bar
+Si Gamme = MacBook Air et preference = prix alors Ordi = MacBook Air 128 Go
+Si Gamme = MacBook Air et preference = stockage alors Ordi = MacBook Air 256 Go
+Si Gamme = MacBook et preference = prix	alors Ordi = MacBook 256 Go
+Si Gamme = MacBook et preference = stockage alors Ordi = MacBook 512 Go
+Si Gamme = MacBook Pro 13’ sans Touch Bar et preference = prix alors Ordi = MaxBook Pro 13’ 128 Go
+Si Gamme = MacBook Pro 13’ sans Touch Bar et preference = stockage alors Ordi = MaxBook Pro 13’ 256 Go
+Si Gamme = MacBook Pro 13’avec Touch Bar et preference = prix alors Ordi = MacBook Pro 13’ 256 Go
+Si Gamme = MacBook Pro 13’avec Touch Bar et preference = stockage alors Ordi = MacBook Pro 13’ 512 Go
+
 
 
 
