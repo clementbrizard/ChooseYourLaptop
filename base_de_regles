@@ -2,48 +2,53 @@ Bureautique :
 
 Si Tableur/Traitement de texte > 5 et Internet > 5 et Gaming < 5 alors usage = bureautique
 
-Si Usage = bureautique et prix <=500 alors Niveau = entree_gamme
-Si Usage = bureautique et prix = 500 alors Niveau = milieu_gamme
-Si Usage = bureautique et prix > 500 alors Niveau = haut_gamme
-Si Usage = bureautique et niveau = entree_gamme et preference = autonomie alors Ordi = ASUS VivoBook E12 E203NA-FD035T
-Si Usage = bureautique et niveau = entree_gamme et preference = stockage alors Ordi = Acer Aspire ES1-523-24HN
-Si Usage = bureautique et niveau = milieu_gamme	alors Ordi = ASUS R702UA-BX169T
-Si Usage = bureautique et niveau = haut_gamme et preference = autonomie	alors Ordi = ASUS P1510UA-GQ281R
-Si Usage = bureautique et niveau = entree_gamme et preference = carte_graphique	alors Ordi = Lenovo IdeaPad 320-17IKB 80XM00BUFR
+Si type = PC et Usage = bureautique et budget <=350 alors prix = 3
+Si type = PC et Usage = bureautique et budget <= 500 alors prix = 2
+Si type = PC et Usage = bureautique et budget > 500 alors prix = 1
 
+Si type = PC et usage = bureautique et prix = 3 et autonomie = 3 alors ordi = ASUS EeeBook E402NA-FA045T Bleu
+Si type = PC et usage = bureautique et prix = 3 et autonomie = 2 alors ordi = Acer Aspire ES1-523-24HN
 
+Si type = PC et usage = bureautique et prix = 2 et stockage = 2 alors ordi = ASUS R702UA-BX169T
+Si type = PC et usage = bureautique et prix = 2 et stockage = 3 et alors ordi = ASUS R556QA-XX061T
+
+Si type = PC et usage = bureautique et prix = 1 et écran = 2 alors ordi = ASUS P1510UA-GQ281R
+Si type = PC et usage = bureautique et prix = 1 et écran = 3 alors ordi = Lenovo IdeaPad 320-17IKB 80XM00BUFR
 
 Gaming :
 
-Usage = gaming et prix <=1000 alors Niveau = entree_gamme
-Usage = gaming et prix = 1100 alors Niveau = milieu_gamme
-Usage = gaming et prix > 1100 alors Niveau = haut_gamme
+Si type = PC et Usage = gaming et prix <= 900 alors prix = 3
+Si type = PC et Usage = gaming et prix <= 1100  alors prix = 2
+Si type = PC et Usage = gaming et prix > 1100 alors prix = 1
 	
-Usage = gaming et niveau = entree_gamme et preference = autonomie alors Ordi = MSI GL62M 7RDX-2231FR
-Usage = gaming et niveau = entree_gamme et preference = carte_graphique alors Ordi = MSI GL62VR 7RFX-867FR
-Usage = gaming et niveau = milieu_gamme  alors Ordi = MSI GP62MVR 7RFX-1010XFR Leopard Pro
-Usage = gaming et niveau = haut_gamme et preference = autonomie alors Ordi = MSI GP62MVR 7RFX-847XFR Leopard Pro
-Usage = gaming et niveau = entree_gamme et preference = carte_graphique  alors Ordi = MSI GE72MVR 7RG-055FR Apache Pro
+Si type = PC et Usage = gaming et prix = 3 alors Ordi = MSI GP62 7RE-415XFR Leopard Pro
+
+Si type = PC et Usage = gaming et prix = 2 et carte_graphique = 2 alors Ordi = MSI GL62VR 7RFX-867FR
+Si type = PC et Usage = gaming et prix = 2 et carte_graphique = 3 alors Ordi = MSI GP72M 7RDX-871XFR Leopard
+
+Si type = PC et Usage = gaming et prix = 1 et carte_graphique = 1 alors Ordi = Gigabyte Sabre 15 - P45G v7 C32W10-FR
+Si type = PC et Usage = gaming et prix = 1 et carte_graphique = 2 alors ordi = Acer Predator Helios 300 G3-572-72MT
+Si type = PC et Usage = gaming et prix = 1 et carte_graphique = 3 alors ordi = MSI GE72MVR 7RG-055FR Apache Pro
 
 Apple :
 
-Si Wanted = prix et performance	alors Gamme = MacBook Air
-Si Wanted = stockage et écran alors Gamme = MacBook
-Si Wanted = performance et écran et stockage alors Gamme = MacBook Pro
-Si Gamme = MacBook Pro et preference = écran alors Gamme  = MacBook Pro 15’
-Si Gamme = MacBook Pro et exigence = prix alors Gamme = MacBook Pro 13’
-Si Gamme = MacBook Pro 15’ et preference = Touch Bar alors Ordi = MacBook Pro 15’ avec Touch Bar
-Si Gamme = MacBook Pro 15’ et preference = prix	alors Ordi = MacBook Pro 15’ sans Touch Bar
-Si Gamme = MacBook Pro 13’ et exigence = Touch Bar alors Gamme = MacBook Pro 13’ avec Touch Bar
-Si Gamme = MacBook Pro 13’ et exigence = prix alors Gamme = MacBook Pro 13’ sans Touch Bar
-Si Gamme = MacBook Air et preference = prix alors Ordi = MacBook Air 128 Go
-Si Gamme = MacBook Air et preference = stockage alors Ordi = MacBook Air 256 Go
-Si Gamme = MacBook et preference = prix	alors Ordi = MacBook 256 Go
-Si Gamme = MacBook et preference = stockage alors Ordi = MacBook 512 Go
-Si Gamme = MacBook Pro 13’ sans Touch Bar et preference = prix alors Ordi = MaxBook Pro 13’ 128 Go
-Si Gamme = MacBook Pro 13’ sans Touch Bar et preference = stockage alors Ordi = MaxBook Pro 13’ 256 Go
-Si Gamme = MacBook Pro 13’avec Touch Bar et preference = prix alors Ordi = MacBook Pro 13’ 256 Go
-Si Gamme = MacBook Pro 13’avec Touch Bar et preference = stockage alors Ordi = MacBook Pro 13’ 512 Go
+Si type = Apple et budget <= 1500 alors prix = 3
+Si type = Apple et budget <= 2500 alors prix = 2
+Si type = Apple et budget > alors prix = 1
+
+
+Si type = Apple et prix = 3 et stockage = 1 et puissance = 2 alors ordi = MacBook Air 128 Go
+Si type = Apple et prix = 3 et puissance = 2 et écran = 1 et autonomie = 3 alors ordi = MacBook Air 256 Go
+Si type = Apple et prix = 3 et écran = 1 et autonomie = 2 alors ordi = MacBook 256 Go
+Si type = Apple et prix = 3 et stockage = 1 et puissance = 3 alors ordi = MacBook Pro 13' 128 Go
+Si type = Apple et prix = 3 et stockage = 2 et puissance = 3 alors ordi = MacBook Pro 13' 256 Go
+
+Si type = Apple et prix = 2 et écran = 1 alors ordi = MacBook 512 Go
+Si type = Apple et prix = 2 et stockage = 2 alors ordi = MacBook Pro 13' Touch Bar 256 Go
+Si type = Apple et prix = 2 et stockage = 3 et puissance = 3 alors ordi = MacBook Pro 13' Touch Bar 512 Go
+
+Si type = Apple et prix = 1 et stockage = 2 alors ordi = MacBook Pro 15'
+Si type = Apple et prix = 1 et stockage = 3 alors ordi = MacBook Pro 15'
 
 
 
