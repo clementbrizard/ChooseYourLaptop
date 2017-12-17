@@ -158,7 +158,9 @@
      ((<= budget 350)
       (push '(budget <= 350) *BF*))
      ((<= budget 500)
-      (push '(budget <= 500) *BF*))
+      (progn
+        (push '(budget <= 500) *BF*)
+        (push '(budget > 350) *BF*)))
      ((> budget 500)
       (push '(budget > 500) *BF*))))
    ((equal usage 'gaming)
@@ -166,7 +168,9 @@
      ((<= budget 900)
       (push '(budget <= 900) *BF*))
      ((<= budget 1100)
-      (push '(budget <= 1100) *BF*))
+      (progn
+        (push '(budget <= 1100) *BF*)
+        (push '(budget > 900) *BF*)))
      ((> budget 1100)
       (push '(budget > 1100) *BF*))))
    ((equal type 'Mac)
@@ -174,7 +178,9 @@
      ((<= budget 1500)
       (push '(budget <= 1500) *BF*))
      ((<= budget 2500)
-      (push '(budget <= 2500) *BF*))
+      (progn
+        (push '(budget <= 2500) *BF*)
+        (push '(budget > 1500) *BF*)))
      ((> budget 2500)
       (push '(budget > 2500) *BF*))))))
    
