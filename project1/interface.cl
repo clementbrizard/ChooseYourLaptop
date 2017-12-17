@@ -39,7 +39,10 @@
       (setq but (list 'ordi '= (getChoixBureautique))))
      
      ((equal usage 'gaming)
-      (setq but (list 'ordi '= (getChoixGaming)))))
+      (setq but (list 'ordi '= (getChoixGaming))))
+     
+     ((equal type 'Mac)
+      (setq but (list 'ordi '= (getChoixApple)))))
     
     (verifier but)))
   
@@ -105,15 +108,79 @@
     
     choix))
 
+(defun getChoixApple ()
+  (let (choix)
+    (format t "Quel ordinateur pensez-vous choisir : ~%")
+    (format t "1 : MacBook Air 128 Go ~%")
+    (format t "2 : MacBook Air 256 Go ~%")
+    (format t "3 : MacBook 256 Go ~%")
+    (format t "4 : MacBook Pro 13p 128 Go ~%")
+    (format t "5 : MacBook Pro 13p 256 Go ~%")
+    (format t "6 : MacBook 512 Go ~%")
+    (format t "7 : MacBook Pro 13p Touch Bar 256 Go ~%")
+    (format t "8 : MacBook Pro 13p Touch Bar 512 Go ~%")
+    (format t "9 : MacBook Pro 15p ~%")
+    (format t "10 : MacBook Pro 15p Touch Bar ~%")
+  
+    (format t "Votre choix : ")
+    
+    (setq choix (read))
+    
+    (cond
+     ((equal choix '1)
+      (setq choix '(MacBook Air 128 Go)))
+     ((equal choix '2)
+      (setq choix '(MacBook Air 256 Go)))
+     ((equal choix '3)
+      (setq choix '(MacBook 256 Go)))
+     ((equal choix '4)
+      (setq choix '(MacBook Pro 13p 128 Go)))
+     ((equal choix '5)
+      (setq choix '(MacBook Pro 13p 256 Go)))
+     ((equal choix '6)
+      (setq choix '(MacBook 512 Go)))
+     ((equal choix '7)
+      (setq choix '(MacBook Pro 13p Touch Bar 256 Go)))
+     ((equal choix '8)
+      (setq choix '(MacBook Pro 13p Touch Bar 512 Go)))
+     ((equal choix '9)
+      (setq choix '(MacBook Pro 15p)))
+     ((equal choix '10)
+      (setq choix '(MacBook Pro 15p))))
+    
+    choix))
+
+
 (defun setBudget (budget type usage)
   (cond
    ((equal usage 'bureautique)
     (cond
      ((<= budget 350)
-      (push '(budget <= 350) *BF*))))))
+      (push '(budget <= 350) *BF*))
+     ((<= budget 500)
+      (push '(budget <= 500) *BF*))
+     ((> budget 500)
+      (push '(budget > 500) *BF*))))
+   ((equal usage 'gaming)
+    (cond
+     ((<= budget 900)
+      (push '(budget <= 900) *BF*))
+     ((<= budget 1100)
+      (push '(budget <= 1100) *BF*))
+     ((> budget 1100)
+      (push '(budget > 1100) *BF*))))
+   ((equal type 'Mac)
+    (cond
+     ((<= budget 1500)
+      (push '(budget <= 1500) *BF*))
+     ((<= budget 2500)
+      (push '(budget <= 2500) *BF*))
+     ((> budget 2500)
+      (push '(budget > 2500) *BF*))))))
+   
+   
 
 
 
 
   
-
