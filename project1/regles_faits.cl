@@ -1,7 +1,11 @@
 (setq *BR* '(
+             (R1 ((type = PC) (gaming = 2)) (usage = gaming))
+             (R1 ((type = PC) (gaming = 3)) (usage = gaming))
+             (R2 ((type = PC) (gaming = 1)) (usage = bureautique))
              (R1 ((type = PC) (usage = bureautique) (budget <= 350)) (prix = 3))
              (R2 ((type = PC) (usage = bureautique) (budget > 350) (budget <= 500)) (prix = 2))
              (R3 ((type = PC) (usage = bureautique) (budget > 500)) (prix = 1))
+             (R18 ((type = PC) (usage = bureautique) (prix = 2) (mémoire = 1) (ecran = 1)) '(conseil = Vous pouvez vous offrir davantage))
              (R4 ((type = PC) (usage = bureautique) (prix = 3) (autonomie = 3 )) (ordi = (ASUS EeeBook E402NA-FA045T Bleu)))
              (R4 ((type = PC) (usage = bureautique) (prix = 3) (mémoire = 1 )) (ordi = (ASUS EeeBook E402NA-FA045T Bleu)))
              (R5 ((type = PC) (usage = bureautique) (prix = 3) (autonomie = 2 )) (ordi = (Acer Aspire ES1-523-24HN)))
