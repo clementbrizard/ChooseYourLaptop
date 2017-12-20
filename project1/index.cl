@@ -1,20 +1,26 @@
 
 (defun chercher ()
-  (let (EC (BR *BR*) (BF *BF*) regleCourante)
+  (let (EC (BR *BR*) (BF *BF*) regleCourante results)
     (loop
       (if (not (equal nil (ordi_trouve BF)))
-          (return (ordi_trouve BF))
-        (dolist (regle BR)
-          (when (declenchable regle BF)
-            (push regle EC)
-            (setq BR (remove regle BR)))))
+          (pushnew (ordi_trouve BF) results :test 'equal))
+      
+      (dolist (regle BR)
+        (when (declenchable regle BF)
+          (push regle EC)
+          (setq BR (remove regle BR))))
+      
       (if EC
           (progn
             (setq regleCourante (pop EC))
             (push (caddr regleCourante) BF))
         (if (conseilADonner)
             (donnerConseil)
-          (return "Pas d'ordi trouvé"))))))
+          (progn
+            (if (not (equal nil results))
+                (afficherListe results)
+              (format t "Aucun ordi ne correspond à vos critères"))
+            (return "Fin de la recherche")))))))
 
 (defun ordi_trouve (BF)
   (dolist (fait BF)
