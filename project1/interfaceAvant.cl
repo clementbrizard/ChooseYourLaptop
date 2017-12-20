@@ -1,4 +1,4 @@
-(defun begin()
+(defun beginAvant()
   (let (type budget)
     (format t "Type PC ou Mac : ")
     (setq type (read))
@@ -34,7 +34,7 @@
     (push (list 'carte_graphique '= (read)) *BF*)
    
     
-    (chercher)))
+    (chainageAvant)))
 
 (defun configurerBudget (budget)
    

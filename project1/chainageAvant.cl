@@ -1,11 +1,10 @@
-
-(defun chercher ()
+(defun chainageAvant ()
   (let (EC (BR *BR*) (BF *BF*) regleCourante results)
     (loop
       (afficherListe BF)
       (format t "~%")
-      (if (not (equal nil (ordi_trouve BF)))
-          (pushnew (ordi_trouve BF) results :test 'equal))
+      (if (not (equal nil (ordiTrouve BF)))
+          (pushnew (ordiTrouve BF) results :test 'equal))
       
       (dolist (regle BR)
         (when (declenchable regle BF)
@@ -19,12 +18,10 @@
         (progn
           (if (not (equal nil results))
               (afficherListe results)
-            (if (conseilADonner)
-                (donnerConseil)
-              (format t "Aucun ordi ne correspond à vos critères")))
+            (format t "Aucun ordi ne correspond à vos critères"))
           (return "Fin de la recherche"))))))
 
-(defun ordi_trouve (BF)
+(defun ordiTrouve (BF)
   (dolist (fait BF)
     (if (equal 'ordi (car fait))
         (return (car(cddr fait))))))
