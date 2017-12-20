@@ -2,6 +2,8 @@
 (defun chercher ()
   (let (EC (BR *BR*) (BF *BF*) regleCourante results)
     (loop
+      (afficherListe BF)
+      (format t "~%")
       (if (not (equal nil (ordi_trouve BF)))
           (pushnew (ordi_trouve BF) results :test 'equal))
       
@@ -14,13 +16,13 @@
           (progn
             (setq regleCourante (pop EC))
             (push (caddr regleCourante) BF))
-        (if (conseilADonner)
-            (donnerConseil)
-          (progn
-            (if (not (equal nil results))
-                (afficherListe results)
-              (format t "Aucun ordi ne correspond à vos critères"))
-            (return "Fin de la recherche")))))))
+        (progn
+          (if (not (equal nil results))
+              (afficherListe results)
+            (if (conseilADonner)
+                (donnerConseil)
+              (format t "Aucun ordi ne correspond à vos critères")))
+          (return "Fin de la recherche"))))))
 
 (defun ordi_trouve (BF)
   (dolist (fait BF)

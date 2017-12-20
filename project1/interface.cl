@@ -37,11 +37,10 @@
     (chercher)))
 
 (defun configurerBudget (budget)
-  
-  (cond
    
    ; bureautique
    
+  (cond 
    ((<= budget 350)
     (push '(budget <= 350) *BF*))
    ((<= budget 500)
@@ -49,10 +48,11 @@
       (push '(budget <= 500) *BF*)
       (push '(budget > 350) *BF*)))
    ((> budget 500)
-    (push '(budget > 500) *BF*))
+    (push '(budget > 500) *BF*)))
   
   ; gaming
   
+  (cond
    ((<= budget 900)
     (push '(budget <= 900) *BF*))
    ((<= budget 1100)
@@ -60,10 +60,11 @@
       (push '(budget <= 1100) *BF*)
       (push '(budget > 900) *BF*)))
    ((> budget 1100)
-    (push '(budget > 1100) *BF*))
+    (push '(budget > 1100) *BF*)))
 
   ; Mac
   
+  (cond
    ((<= budget 1500)
     (push '(budget <= 1500) *BF*))
    ((<= budget 2500)
