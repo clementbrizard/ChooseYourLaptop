@@ -1,5 +1,5 @@
 (defun beginAvant()
-  (let (type budget)
+  (let (type)
     (format t "Type PC ou Mac : ")
     (setq type (read))
     (push (list 'type '= type) *BF*)
@@ -17,7 +17,9 @@
             
     (format t "Budget : ")
     (configurerBudget (read))
-  
+    
+    (format t "Vous pouvez maintenant répondre 0 si vous ne savez pas : ~%")
+
     (format t "Autonomie : ")
     (push (list 'autonomie '= (read)) *BF*)
     
@@ -32,13 +34,12 @@
     
     (format t "Qualité graphique : ")
     (push (list 'carte_graphique '= (read)) *BF*)
-   
     
     (chainageAvant)))
 
 (defun configurerBudget (budget)
-   
-   ; bureautique
+  
+  ; bureautique
    
   (cond 
    ((<= budget 350)
@@ -61,7 +62,7 @@
       (push '(budget > 900) *BF*)))
    ((> budget 1100)
     (push '(budget > 1100) *BF*)))
-
+  
   ; Mac
   
   (cond

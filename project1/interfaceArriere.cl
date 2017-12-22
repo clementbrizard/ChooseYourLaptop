@@ -17,6 +17,8 @@
             
     (format t "Budget : ")
     (configurerBudget (read))
+    
+    (format t "Vous pouvez maintenant répondre 0 si vous ne savez pas : ~%")
   
     (format t "Autonomie : ")
     (push (list 'autonomie '= (read)) *BF*)

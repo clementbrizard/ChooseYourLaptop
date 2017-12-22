@@ -61,4 +61,10 @@
                         
 (setq *BF* ())
 
+(setq *ordisManques* ())
+
+(setq *faitsNecessaires* ())
+
+(setq *faitsManquants* ())
+
 
