@@ -67,5 +67,7 @@
 
 (setq *faitsManquants* ())
 
+(setq *reglesCandidates* ())
+
 
 

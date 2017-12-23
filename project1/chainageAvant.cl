@@ -30,31 +30,88 @@
         (return (car(cddr fait))))))
 
 (defun afficherOrdisManques ()
-  (format t "-------------------- ~% ~%")
-  (while *ordisManques*
-    (format t "Ordi qui aurait été possible : ~a ~%" (pop *ordisManques*))
-    (format t "Critères nécessaires : ~a ~%" (pop *faitsNecessaires*))
-    (format t "Fait manquant : ~a ~% ~%" (pop *faitsManquants*))
-    (format t "-------------------- ~% ~%")))
-    
+  (let (faitManquant budget)
+    (format t "-------------------- ~% ~%")
+    (while *ordisManques*
+      (format t "Ordi qui aurait été possible : ~a ~%" (car (last (pop *ordisManques*))))
+      (format t "Critères nécessaires : ~a ~%" (pop *faitsNecessaires*))
+      (setq faitManquant (pop *faitsManquants*))
+      (if (equal 'prix (car faitManquant))
+          (progn
+            (setq budget (budgetFromPrix faitManquant))
+            (format t "Fait manquant : ~%")
+            (afficherListe budget)
+            (format t "~%"))
+        (format t "Fait manquant : ~a ~% ~%" faitManquant))
+      (format t "-------------------- ~% ~%"))))
 
+(defun budgetFromPrix (faitPrix)
+  (let (type usage (prix (car (last faitPrix))) res)
+    (if (present '(type = Mac) *BF*)
+        (setq type 'Mac)
+      (if (present '(usage = bureautique) *BF*)
+          (setq usage 'bureautique)
+        (setq usage 'gaming)))
+    (cond
+     ((equal usage 'bureautique)
+      (cond
+       ((equal prix '1)
+        (push '(budget > 500) res))
+       ((equal prix '2)
+        (progn
+          (push '(budget > 350) res)
+          (push '(budget <= 500) res)))
+       ((equal prix '3)
+        (push '(budget <= 350) res))))
+     ((equal usage 'gaming)
+      (cond
+       ((equal prix '1)
+        (push '(budget > 1100) res))
+       ((equal prix '2)
+        (progn
+          (push '(budget > 900) res)
+          (push '(budget <= 1100) res)))
+       ((equal prix '3)
+        (push '(budget <= 9000) res))))
+     ((equal type 'Mac)
+      (cond
+       ((equal prix '1)
+        (push '(budget > 2500) res))
+       ((equal prix '2)
+        (progn
+          (push '(budget > 1500) res)
+          (push '(budget <= 2500) res)))
+       ((equal prix '3)
+        (push '(budget <= 1500) res)))))
+    res))
+       
 (defun declenchable (regle BF)
-  (let ((OK T) (ordi (car (last (car (last regle))))) (ccl (car (car (cddr regle)))) faitsManquants)
+  (let ((OK T) (ccl (car (last regle))) faitsManquants)
     (dolist (fait (cadr regle))
       (if (not (present fait BF))
           (progn
             (setq OK NIL)
             (push fait faitsManquants))))
-    (if (and (not (present ordi *ordisManques*)) (memeUsage (cadr regle) BF) (equal 'ordi ccl))
-        (if (equal (length faitsManquants) 1)
-            (regleManquee regle ordi (car faitsManquants))))      
+    (if (regleManqueeValide regle faitsManquants BF)
+        (regleManquee regle (car faitsManquants)))  
     OK))
 
-(defun regleManquee (regle ordi faitManquant)
-  (if (not (present ordi *ordisManques*))
+(defun regleManqueeValide (regle faitsManquants base)
+  (let ((ccl (car (last regle))))
+    (if (and (equal 'ordi (car ccl))
+             (equal (length faitsManquants) 1)
+             (not (present ccl *ordisManques*)))
+        (if (present '(type = PC) (cadr regle))
+            (if (memeUsage (cadr regle) base)
+                T)
+          T))))
+  
+
+(defun regleManquee (regle faitManquant)
+  (if (not (present (car (last regle)) *ordisManques*))
       (progn
         (push (cadr regle) *faitsNecessaires*)
-        (push ordi *ordisManques*)
+        (push (car (last regle)) *ordisManques*)
         (push faitManquant *faitsManquants*))))
   
 
@@ -71,9 +128,10 @@
   (while (not (equal *faitsNecessaires* ()))
     (pop *faitsNecessaires*))
   (while (not (equal *faitsManquants* ()))
-    (pop *faitsManquants*)))
+    (pop *faitsManquants*))
+  (while (not (equal *reglesCandidates* ()))
+    (pop *reglesCandidates*)))
   
-
 (defun afficherListe (liste)
   (dolist (elem liste)
     (print elem))
@@ -88,7 +146,7 @@
   (let (usage)
     (dolist (fait faits usage)
       (if (equal (car fait) 'usage)
-          (setq usage fait)))))
+(setq usage fait)))))
 
      
 
