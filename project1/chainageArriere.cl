@@ -3,7 +3,7 @@
     (if (verifierFait but)
         "L'ordi choisi correspond à vos critères"
       "L'ordi choisi ne correspond pas à vos critères")))
-
+        
 (defun verifierFait (fait)
   (let ((OK NIL) EC regle)
     (if (member fait *BF* :test 'equal)
@@ -30,3 +30,14 @@
 
 (defun getPremisses (regle)
   (cadr (assoc regle *BR*)))
+
+
+
+      
+          
+              
+                
+                
+                
+                      
+    

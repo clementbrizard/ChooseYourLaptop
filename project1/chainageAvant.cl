@@ -45,7 +45,7 @@
           (progn
             (setq OK NIL)
             (push fait faitsManquants))))
-    (if (and (not (present ordi *ordisManques*)) (memeUsage regle BF) (equal 'ordi ccl))
+    (if (and (not (present ordi *ordisManques*)) (memeUsage (cadr regle) BF) (equal 'ordi ccl))
         (if (equal (length faitsManquants) 1)
             (regleManquee regle ordi (car faitsManquants))))      
     OK))
@@ -79,13 +79,14 @@
     (print elem))
   (format t "~%"))
 
-(defun memeUsage (regle base)
-  (if (equal (getUsage (cadr regle)) (getUsage base))
+(defun memeUsage (faits base)
+  (if (and (equal (getUsage faits) (getUsage base))
+           (not (equal nil (getUsage faits))))
       T))
 
-(defun getUsage (base)
+(defun getUsage (faits)
   (let (usage)
-    (dolist (fait base usage)
+    (dolist (fait faits usage)
       (if (equal (car fait) 'usage)
           (setq usage fait)))))
 
