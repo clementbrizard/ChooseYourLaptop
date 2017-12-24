@@ -28,6 +28,7 @@
           (progn
             (setq regleCourante (pop EC))
             (push (caddr regleCourante) *BF*))
+        
         ; Si non 
         (progn
           ; Si des ordis ont été trouvés, les afficher
