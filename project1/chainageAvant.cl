@@ -6,19 +6,19 @@
 ;;
 
 (defun chainageAvant ()
-  (let (EC (BR *BR*) (BF *BF*) regleCourante results)
+  (let (EC (BR *BR*) regleCourante results)
     (loop
       (format t "~%")
       ; Un ordi a-t-il été trouvé ?
-      (if (not (equal nil (ordiTrouve BF)))
-          (pushnew (ordiTrouve BF) results :test 'equal))
+      (if (not (equal nil (ordiTrouve)))
+          (pushnew (ordiTrouve) results :test 'equal))
       ; pushnew car plusieurs règles mènent aux mêmes 
       ; ordis et pourraient être satisfaites en même
       ; temps
       
       ; Si non chercher les règles déclenchables
       (dolist (regle BR)
-        (when (declenchable regle BF)
+        (when (declenchable regle)
           (push regle EC)
           (setq BR (remove regle BR))))
       
@@ -27,7 +27,7 @@
       (if EC
           (progn
             (setq regleCourante (pop EC))
-            (push (caddr regleCourante) BF))
+            (push (caddr regleCourante) *BF*))
         ; Si non 
         (progn
           ; Si des ordis ont été trouvés, les afficher
@@ -48,8 +48,8 @@
 ; le nom de l'ordi le cas échéant
 ;;
 
-(defun ordiTrouve (BF)
-  (dolist (fait BF)
+(defun ordiTrouve ()
+  (dolist (fait *BF*)
     (if (equal 'ordi (car fait))
         (return (car(cddr fait))))))
 
@@ -64,16 +64,16 @@
 ; responsables de l'échec.
 ;;
 
-(defun declenchable (regle BF)
+(defun declenchable (regle)
   (let ((OK T) faitsManquants)
     (dolist (fait (cadr regle))
-      (if (not (present fait BF))
+      (if (not (present fait *BF*))
           (progn
             (setq OK NIL)
             (push fait faitsManquants))))
     ; La règle courante est non déclenchable, conclue-
     ; elle sur un ordi conforme à la base de faits ?
-    (if (regleManqueeValide regle faitsManquants BF)
+    (if (regleManqueeValide regle faitsManquants)
         ; Si oui on enregistre les raisons de l'échec
         ; pour les restituer à la fin si aucun ordi 
         ; n'a été trouvé
@@ -86,7 +86,7 @@
 ; cohérent avec une base de faits donnée
 ;;
 
-(defun regleManqueeValide (regle faitsManquants base)
+(defun regleManqueeValide (regle faitsManquants)
   (let ((ccl (car (last regle))))
     ; Si la règle conclue bien sur un ordi
     (if (and (equal 'ordi (car ccl))
@@ -102,7 +102,7 @@
             ; Si l'usage du PC est le même que celui
             ; obtenu à partir de la base passée en
             ; paramètre
-            (if (memeUsage (cadr regle) base)
+            (if (memeUsage (cadr regle) *BF*)
                 ; La règle est valide
                 T)
           ; Si non la règle conclue sur un Mac, pas de
