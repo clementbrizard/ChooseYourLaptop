@@ -1,3 +1,11 @@
+;;;
+; Interface utilisateur pour le chaînage arrière. Constitue
+; la base de faits à partir des réponses de l'utilisateur. 
+; Demande à l'utilisateur quel ordi il compte prendre. Lance 
+; la fonction de chaînage arrière pour vérifier que l'ordi 
+; repéré correspond aux critères renseignés
+;;
+
 (defun beginArriere()
   (let (type budget ordiChoisi)
     (format t "Type PC ou Mac : ")
@@ -38,6 +46,11 @@
     (setq ordiChoisi (choisirOrdi))
    
     (chainageArriere ordiChoisi)))
+
+;;;
+; Interface utilisateur de choix 
+; de l'ordinateur à tester
+;;
 
 (defun choisirOrdi ()
   (let (choix)

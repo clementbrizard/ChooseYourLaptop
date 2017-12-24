@@ -1,3 +1,10 @@
+;;;
+; Interface utilisateur pour le chaînage avant.
+; Constitue la base de faits à partir des réponses
+; de l'utilisateur. Appelle ensuite la fonction de 
+; chaînage avant
+;;
+
 (defun beginAvant()
   (let (type)
     (format t "Type PC ou Mac : ")
@@ -37,9 +44,15 @@
     
     (chainageAvant)))
 
+;;;
+; Remplis la base de faits à partir du
+; du budget
+;;
+
 (defun configurerBudget (budget)
   
-  ; bureautique
+  ; positionnemement par rapport aux seuils
+  ; du marché bureautique
    
   (cond 
    ((<= budget 350)
@@ -63,7 +76,7 @@
    ((> budget 1100)
     (push '(budget > 1100) *BF*)))
   
-  ; Mac
+  ; Macs
   
   (cond
    ((<= budget 1500)
